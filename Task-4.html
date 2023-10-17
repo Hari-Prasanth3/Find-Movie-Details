@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="task-4.css">
+</head>
+
+<body>
+
+    <div class="tophead">
+        <div class="name">
+            <h3><b>Movie.</b>Guide</h3>
+        </div>
+        <div class="search">
+            <form id="form">
+                <h1 id="searchmovie">Search Movie</h1><br>
+                <input type="text" id="data" placeholder="Search Movie Title">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="movieDetails"></div>
+
+
+    <script>
+        document.getElementById("form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const data = document.getElementById("data").value;
+            try {
+                await fetch(`https://www.omdbapi.com/?t=${data}&apikey=562f3089`)
+                    .then((response) => response.json())
+                    .then((x) => {
+                        displayMovieDetails(x);
+                    });
+            }
+            catch {
+                var body = document.getElementsByTagName("body")[0];
+                body.style.backgroundColor = "white";
+                body.style.color = "black";
+                body.innerHTML = "404 Error";
+            }
+        });
+
+        function displayMovieDetails(x) {
+            const movieDetails = document.getElementById("movieDetails");
+            if (x.Response === "True") {
+                const { Title, Year, Director, Writer, Plot, Poster, Runtime, Genre, Actors, Language, imdbRating } = x;
+                movieDetails.innerHTML = `
+                        
+                       
+                        <img src = "${Poster}">
+                        <h1 >${Title} (${Year})</h1>
+                        <h2><strong>Director:</strong>   ${Director}</h2>
+                        <h2><strong>Writer:</strong>     ${Writer}</h2>
+                        <h2><strong>Runtime:</strong>    ${Runtime}</h2>
+                        <h2><strong>IMDB Rating:</strong> ${imdbRating}</h2>
+                        <h2><strong>Genre:</strong>      ${Genre}</h2>
+                        <h2><strong>Actors:</strong>     ${Actors}</h2>
+                        <h2><strong>Languages:</strong>  ${Language}</h2>
+                        <h2><strong>Plot:</strong>       ${Plot}</h2>
+                    `;
+            } else {
+                movieDetails.innerHTML = "<h2>Movie not found</h2>";
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: black;
+}
+.tophead{
+    background-color:#d4aa11;   
+    padding-bottom: 10px;
+}
+.name{
+    font-size: x-large;
+   padding: 20px;
+   color:white ;
+}
+b{
+    color: black;
+}
+.search{
+    display: flex;
+    justify-content: center;  
+  
+}
+h1{
+    text-align: center;
+    font-size: 50px;
+    color: antiquewhite;
+    margin-top: 10px;
+}
+#searchmovie{
+    color: black;
+    font-size: 40px;
+    margin-right: 40px;
+
+}
+#movieDetails{
+    color: #d4aa11;
+    
+}
+#data{
+    height: 40px;
+    width: 400px;
+    border-radius: 5px;
+    
+}
+button{
+    width: 80px;
+    height: 30px;
+    background-color: black;
+    color: antiquewhite;
+    cursor: pointer;
+    border-radius: 5px;
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    
+}
+strong{
+    color: white; 
+}
+h2{
+    margin: 30px;
+}
